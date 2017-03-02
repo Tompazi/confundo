@@ -1,0 +1,46 @@
+USAGE:
+	python confundo.py [OPTIONS] string
+
+DESCRIPTION:
+	This program replaces characters in a string with similar looking 
+	Unicode characters and produces a list of all similar looking 
+	combinations.
+
+OPTIONS:
+	-h, --help		Display this page and exit
+
+	-d min:max,		Combination depth, in other words how many 
+	--depth=min:max		characters should be replaced
+				Default minimum: 1, Default maximum: maximum of 
+				replaceable characters.
+
+	-x, --xml		Encode output for XML.
+
+	-p, --python		Encode output with backslashes for Python.
+	
+	-v, --visual		Additionally print 'utf-8' encoded version of 
+				the string if -p or -x are used, for visual
+				comparison.
+
+	-i, --identical		Replace characters only with almost identically 
+				looking characters.
+
+	-r, --reverse		Find more confusing combinations by additionally
+				reversing the lookup.
+
+	-X, --extreme		Find even more confusing combinations by 
+				additionally extending the lookup. This option 
+				implies the -r option.
+
+	-n x, --limit x		Amount of similar looking strings to print.
+
+EXAMPLE:
+	python confundo.py -X -d 2: -n 20 confundo
+	python confundo.py -pv -d 1:1 Google
+	python confundo.py -ivx Facebook
+
+NOTES:
+	If no encoding (-x or -p) is specified the characters will be printed
+	with 'utf-8' encoding, note that in 'utf-8' some different characters 
+	may be encoded identically leading to duplicates in the output.
+
